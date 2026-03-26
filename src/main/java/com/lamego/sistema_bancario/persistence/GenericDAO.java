@@ -5,16 +5,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class GenericDAO {
-    private Connection c;
+    private static final String hostName = "localhost";
+    private static final String port = "64638";
+    private static final String dbName = "bd_sistema_bancario";
+    private static final String userName = "admin";
+    private static final String password = "12345678";
 
-    public Connection getConnection() throws SQLException, ClassNotFoundException {
-        String hostName = "localhost";
-        String port = "64638";
-        String dbName = "bd_sistema_bancario";
-        String userName = "admin";
-        String password = "12345678";
-        Class.forName("net.sourceforge.jtds.jdbc.Driver");
-        return c = DriverManager.getConnection(String.format("jdbc:jtds:sqlserver://%s:%s;databaseName:%s;user=%s;password=%s;",
+    static {
+        try {
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Erro ao carregar driver JDBC.", e);
+        }
+    }
+
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(String.format("jdbc:jtds:sqlserver://%s:%s;databaseName:%s;user=%s;password=%s;",
                 hostName, port, dbName, userName, password));
     }
 }

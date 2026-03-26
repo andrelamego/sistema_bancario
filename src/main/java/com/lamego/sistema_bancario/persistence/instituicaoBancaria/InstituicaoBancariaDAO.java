@@ -71,9 +71,9 @@ public class InstituicaoBancariaDAO implements IInstituicaoBancariaDAO {
             if(rs.next()){
                 return mapResultSetToInstituicao(rs);
             }
-        }
 
-        return null;
+            return null;
+        }
     }
 
     @Override

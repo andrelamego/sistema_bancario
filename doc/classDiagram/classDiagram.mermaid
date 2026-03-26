@@ -1,0 +1,45 @@
+classDiagram
+    InstituicaoBancaria "1" --> "1..*" Agencia : possui
+    Agencia "1" --> "0..*" ContaBancaria : gerencia
+    ContaBancaria <|-- ContaCorrente
+    ContaBancaria <|-- ContaPoupanca
+    Cliente "1" --> "0..*" Titularidade : participa
+    ContaBancaria "1" --> "1..2" Titularidade : possui
+
+    class InstituicaoBancaria{
+        -Long id
+        -String nome
+    }
+
+    class Agencia{
+        -Long id
+        -String numero
+        -String cep
+        -String cidade
+    }
+
+    class Cliente{
+        -String cpf
+        -String nome
+        -LocalDate dataPrimeiraConta
+        -String senha
+    }
+
+    class ContaBancaria{
+        -String codigo
+        -LocalDate dataAbertura
+        -BigDecimal saldo
+    }
+
+    class ContaCorrente{
+        -BigDecimal limiteCredito
+    }
+
+    class ContaPoupanca{
+        -BigDecimal percentualRendimento
+        -int diaAniversario
+    }
+
+    class Titularidade{
+        -int ordemTitular
+    }

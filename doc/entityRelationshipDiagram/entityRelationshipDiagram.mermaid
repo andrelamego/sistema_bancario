@@ -1,0 +1,51 @@
+erDiagram
+    INSTITUICAO_BANCARIA ||--|{ AGENCIA : possui
+    AGENCIA ||--o{ CONTA_BANCARIA : gerencia
+    CONTA_BANCARIA ||--|| CONTA_CORRENTE : especializacao
+    CONTA_BANCARIA ||--|| CONTA_POUPANCA : especializacao
+    CLIENTE ||--o{ TITULARIDADE : participa
+    CONTA_BANCARIA ||--|{ TITULARIDADE : possui
+
+    INSTITUICAO_BANCARIA {
+        BIGINT id_instituicao PK
+        VARCHAR nome
+    }
+
+    AGENCIA {
+        BIGINT id_agencia PK
+        VARCHAR numero
+        VARCHAR cep
+        VARCHAR cidade
+        BIGINT id_instituicao FK
+    }
+
+    CLIENTE {
+        CHAR cpf PK
+        VARCHAR nome
+        DATE data_primeira_conta
+        VARCHAR senha
+    }
+
+    CONTA_BANCARIA {
+        VARCHAR codigo_conta PK
+        DATE data_abertura
+        DECIMAL saldo
+        BIGINT id_agencia FK
+    }
+
+    CONTA_CORRENTE {
+        VARCHAR codigo_conta PK, FK
+        DECIMAL limite_credito
+    }
+
+    CONTA_POUPANCA {
+        VARCHAR codigo_conta PK, FK
+        DECIMAL percentual_rendimento
+        INT dia_aniversario
+    }
+
+    TITULARIDADE {
+        VARCHAR codigo_conta PK, FK
+        CHAR cpf_cliente PK, FK
+        INT ordem_titular
+    }

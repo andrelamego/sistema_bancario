@@ -15,4 +15,5 @@ public class ContaBancaria {
     private LocalDate dataAbertura;
     private BigDecimal saldo;
     private Agencia agencia;
+    private Titularidade titularidade;
 }

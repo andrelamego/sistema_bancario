@@ -20,7 +20,6 @@ public class AgenciaDAO implements IAgenciaDAO {
         this.instituicaoBancariaDAO = new InstituicaoBancariaDAO();
     }
 
-
     @Override
     public void insertAgencia(Agencia agencia) throws SQLException {
         String sql = "EXEC sp_insert_agencia ?, ?, ?, ?, ?";

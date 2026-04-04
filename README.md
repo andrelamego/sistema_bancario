@@ -57,14 +57,23 @@ O sistema permite gerenciar clientes, agências e contas bancárias em um fluxo 
 
 ## Regras de Negócio
 
-- Senha de cliente obrigatória, com **8 caracteres** e pelo menos **3 dígitos**.
-- CPF obrigatório para operações de cliente e conta.
-- Saldo, limite e rendimento não podem ser negativos.
-- Dia de aniversário da poupança deve estar entre **1 e 31**.
-- Conta conjunta aceita no máximo **2 titulares**.
-- Inclusão de segundo titular exige autenticação do titular atual (CPF e senha).
-- Há restrições para exclusão quando há vínculo com conta conjunta.
-- O código da conta é gerado com base em regra definida no banco de dados (agência, CPF(s) e dígito verificador).
+- O código da conta é formado por:
+  código da agência + últimos 3 dígitos do CPF do titular.
+  Em conta conjunta, o código deve considerar os últimos 3 dígitos dos dois titulares.
+  Ao final, é concatenado um dígito verificador.
+- O dígito verificador é calculado pela soma de todos os dígitos do código parcial e aplicação de módulo 5 (`soma % 5`), considerando apenas o resto inteiro da divisão.
+- A senha do cliente é definida pelo usuário e deve ter exatamente 8 caracteres, com pelo menos 3 caracteres numéricos.
+- Clientes com contas conjuntas não podem ser excluídos da base.
+- O sistema permite atualizar apenas:
+  senha do cliente, saldo da conta, limite de crédito e percentual de rendimento da poupança.
+  Os demais atributos não podem ser atualizados.
+- Um novo cliente deve informar seus dados e o tipo de conta desejado.
+  A conta é criada com saldo inicial zero e, para conta corrente, limite de crédito inicial de 500,00.
+  Para conta poupança, o dia de aniversário padrão é 10 e o rendimento inicial é 1%.
+- Uma conta conjunta sempre começa com o cadastro de um único titular.
+- Para incluir companheiro(a) em conta conjunta, a conta deve existir e já ter titular cadastrado.
+  A inclusão exige autenticação do titular atual (login e senha) para autorização.
+- Não é permitido incluir companheiro(a) em conta conjunta com saldo menor ou igual a zero, salvo quando a conta foi criada no mesmo dia.
 
 ## Tecnologias
 

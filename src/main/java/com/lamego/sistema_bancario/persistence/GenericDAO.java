@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class GenericDAO {
 
+    // SOLID (SRP): classe dedicada somente à responsabilidade de conexão com banco.
     private static final String hostName = "localhost";
     private static final String port = "64638";
     private static final String dbName = "bd_sistema_bancario";

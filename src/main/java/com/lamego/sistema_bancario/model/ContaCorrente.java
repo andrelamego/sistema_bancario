@@ -11,5 +11,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class ContaCorrente extends ContaBancaria{
+    // SOLID (LSP): extensão especializada que preserva o contrato de ContaBancaria.
     private BigDecimal limiteCredito;
 }

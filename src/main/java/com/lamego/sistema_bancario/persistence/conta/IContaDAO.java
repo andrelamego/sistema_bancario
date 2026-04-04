@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IContaDAO {
+    // SOLID (ISP + DIP): abstração de operações de Conta para desacoplar regra de negócio da implementação JDBC.
     String insertContaCorrente(String cpfCliente, Long idAgencia) throws SQLException;
     String insertContaPoupanca(String cpfCliente, Long idAgencia) throws SQLException;
     void deleteConta(String numeroConta) throws SQLException;

@@ -8,9 +8,11 @@ import java.util.List;
 
 public class AgenciaService {
 
+    // SOLID (SRP): serviço concentra regras de negócio de Agência.
     private final AgenciaDAO agenciaDAO;
 
     public AgenciaService() {
+        // SOLID (DIP - parcial): regra depende de uma abstração de persistência (camada DAO), não de JDBC direto.
         this.agenciaDAO = new AgenciaDAO();
     }
 

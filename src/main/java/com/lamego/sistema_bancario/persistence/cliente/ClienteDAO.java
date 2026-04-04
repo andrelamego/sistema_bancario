@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAO implements IClienteDAO{
+    // SOLID (SRP): classe responsável somente por operações de persistência de Cliente.
     private final GenericDAO genericDAO;
 
     public ClienteDAO() {

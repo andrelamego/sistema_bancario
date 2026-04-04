@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class ContaBancaria {
+    // SOLID (LSP): contrato base para permitir substituição por ContaCorrente/ContaPoupanca.
     private String codigo;
     private LocalDate dataAbertura;
     private BigDecimal saldo;

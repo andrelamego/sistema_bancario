@@ -17,6 +17,7 @@ import java.util.List;
 @WebServlet("/agencia")
 public class AgenciaServlet extends HttpServlet {
 
+    // SOLID (SRP): controller apenas orquestra HTTP e delega regra para service.
     private static final long serialVersionUID = 1L;
     private AgenciaService agenciaService;
 

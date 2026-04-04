@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class ContaPoupanca extends ContaBancaria{
+    // SOLID (LSP): extensão especializada que preserva o contrato de ContaBancaria.
     private BigDecimal percentualRendimento;
     private int diaAniversario;
 }

@@ -9,9 +9,11 @@ import java.util.List;
 
 public class ContaService {
 
+    // SOLID (SRP): todas as regras de negócio de Conta estão centralizadas aqui.
     private final ContaDAO contaDAO;
 
     public ContaService() {
+        // SOLID (DIP - parcial): camada de regra depende da camada de persistência, não da infraestrutura JDBC.
         this.contaDAO = new ContaDAO();
     }
 
@@ -36,6 +38,7 @@ public class ContaService {
 
     public ContaBancaria buscarConta(String codigoConta) throws SQLException {
         validarCodigoConta(codigoConta);
+        // SOLID (LSP): retorno pelo tipo base permite tratar ContaCorrente/ContaPoupanca de forma polimórfica.
         return contaDAO.selectConta(codigoConta);
     }
 

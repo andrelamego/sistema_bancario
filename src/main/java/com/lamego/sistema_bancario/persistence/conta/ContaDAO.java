@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContaDAO implements IContaDAO{
+    // SOLID (SRP): implementação de acesso a dados específica para Conta.
     private final GenericDAO genericDAO;
 
     public ContaDAO() {
@@ -204,6 +205,7 @@ public class ContaDAO implements IContaDAO{
         BigDecimal limiteCredito = rs.getBigDecimal("limite_credito");
         BigDecimal percentualRendimento = rs.getBigDecimal("percentual_rendimento");
 
+        // SOLID (LSP): decisão por subtipo concreto permite tratar ambos via tipo base ContaBancaria.
         if ("CORRENTE".equalsIgnoreCase(tipoConta) || limiteCredito != null) {
             return ContaCorrente.builder()
                     .codigo(codigoConta)

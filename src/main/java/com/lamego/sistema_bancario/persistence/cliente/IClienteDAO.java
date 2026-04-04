@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IClienteDAO {
+    // SOLID (ISP + DIP): interface dedicada apenas ao ciclo de vida de Cliente.
     void insertCliente(Cliente cliente) throws SQLException;
     void updateSenhaCliente(Cliente cliente) throws SQLException;
     void deleteCliente(String cpf) throws SQLException;

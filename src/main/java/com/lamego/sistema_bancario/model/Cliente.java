@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cliente {
+    // SOLID (SRP): POJO de domínio isolado da lógica de aplicação.
     private String cpf;
     private String nome;
     private LocalDate dataPrimeiraConta;

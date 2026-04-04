@@ -20,6 +20,7 @@ import java.util.List;
 @WebServlet("/conta")
 public class ContaServlet extends HttpServlet {
 
+    // SOLID (SRP): servlet atua como adaptador web, enquanto regras de conta ficam em ContaService.
     private static final long serialVersionUID = 1L;
     private ContaService contaService;
     private ClienteService clienteService;

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InstituicaoBancariaDAO implements IInstituicaoBancariaDAO {
+    // SOLID (SRP): implementação de persistência exclusiva para Instituição Bancária.
     private final GenericDAO genericDAO;
 
     public InstituicaoBancariaDAO() {

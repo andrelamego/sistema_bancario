@@ -12,10 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AgenciaDAO implements IAgenciaDAO {
+    // SOLID (SRP): implementação focada apenas na persistência de Agência.
     private final GenericDAO genericDAO;
     private final InstituicaoBancariaDAO instituicaoBancariaDAO;
 
     public AgenciaDAO() {
+        // SOLID (DIP): DAO consome abstrações de persistência reutilizáveis (GenericDAO e outro DAO especializado).
         this.genericDAO = new GenericDAO();
         this.instituicaoBancariaDAO = new InstituicaoBancariaDAO();
     }

@@ -19,6 +19,7 @@ import java.util.List;
 @WebServlet("/cliente")
 public class ClienteServlet extends HttpServlet {
 
+    // SOLID (SRP): responsabilidade focada em entrada/saída HTTP do módulo de Cliente.
     private static final long serialVersionUID = 1L;
     private ClienteService clienteService;
     private ContaService contaService;

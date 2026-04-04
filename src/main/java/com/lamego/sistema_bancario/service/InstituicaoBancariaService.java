@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class InstituicaoBancariaService {
+    // SOLID (SRP): serviço especializado em regras de Instituição Bancária.
     private final InstituicaoBancariaDAO instituicaoBancariaDAO;
 
     public InstituicaoBancariaService() {
+        // SOLID (DIP - parcial): acesso a dados é delegado para a camada DAO.
         this.instituicaoBancariaDAO = new InstituicaoBancariaDAO();
     }
 

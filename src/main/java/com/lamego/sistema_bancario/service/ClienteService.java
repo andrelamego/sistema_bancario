@@ -8,9 +8,11 @@ import java.util.List;
 
 public class ClienteService {
 
+    // SOLID (SRP): validações e políticas de Cliente ficam isoladas da camada web e da camada SQL.
     private final ClienteDAO clienteDAO;
 
     public ClienteService() {
+        // SOLID (DIP - parcial): uso da camada de persistência por contrato de responsabilidades.
         this.clienteDAO = new ClienteDAO();
     }
 
@@ -83,6 +85,7 @@ public class ClienteService {
     }
 
     private void validarSenha(String senha) {
+        // SOLID (OCP): regra de senha está encapsulada e pode evoluir sem alterar controllers/DAO.
         if (senha == null || senha.isBlank()) {
             throw new IllegalArgumentException("Senha do cliente é obrigatória.");
         }

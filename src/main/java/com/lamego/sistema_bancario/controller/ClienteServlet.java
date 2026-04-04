@@ -54,6 +54,7 @@ public class ClienteServlet extends HttpServlet {
         String saida = "";
         String erro = "";
         String returnUrl = request.getParameter("returnUrl");
+        boolean fromPainel = "true".equals(request.getParameter("fromPainel"));
 
         String cmd = request.getParameter("button");
         Cliente cliente = null;
@@ -86,6 +87,14 @@ public class ClienteServlet extends HttpServlet {
                 if (cliente != null && cliente.getCpf() != null) {
                     clienteService.excluirCliente(cliente.getCpf());
                     saida = "Cliente excluido com sucesso.";
+                    if (fromPainel) {
+                        HttpSession session = request.getSession(false);
+                        if (session != null) {
+                            session.invalidate();
+                        }
+                        response.sendRedirect(request.getContextPath() + "/");
+                        return;
+                    }
                     cliente = null;
                 } else {
                     erro = "Preencha os campos !";
@@ -125,7 +134,14 @@ public class ClienteServlet extends HttpServlet {
             }
         } catch (IllegalArgumentException | SQLException e) {
             erro = e.getMessage();
+            if (fromPainel && cmd != null && cmd.contains("Excluir")) {
+                view = "views/cliente/painel.jsp";
+                carregarPainelCliente(request);
+            }
         } finally {
+            if (response.isCommitted()) {
+                return;
+            }
             if (!isBlank(saida) && isBlank(erro) && !isBlank(returnUrl) && cmd != null && cmd.contains("Atualizar")) {
                 response.sendRedirect(returnUrl);
                 return;

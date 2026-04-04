@@ -1,0 +1,35 @@
+:root {
+    --app-primary: #0d6efd;
+    --app-bg: #f4f7fc;
+    --app-panel: #ffffff;
+    --app-border: #e2e8f3;
+}
+
+body {
+    background: var(--app-bg);
+}
+
+.app-navbar {
+    background: linear-gradient(90deg, #0d4fb3 0%, #0d6efd 100%);
+    box-shadow: 0 4px 16px rgba(13, 79, 179, 0.25);
+}
+
+.hero-panel {
+    background: linear-gradient(135deg, #0d6efd 0%, #00a3bf 100%);
+    color: #ffffff;
+}
+
+.soft-panel {
+    border: 1px solid var(--app-border);
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(20, 31, 61, 0.08);
+}
+
+.section-title {
+    font-weight: 700;
+    color: #1d2b45;
+}
+
+.footer {
+    background: #ffffff;
+}

@@ -111,11 +111,28 @@ public class ClienteDAO implements IClienteDAO{
     }
 
     private Cliente mapResultSetToCliente(ResultSet rs) throws SQLException {
+        Date dataSql = rs.getDate("data_primeira_conta");
+        String senha = hasColumn(rs, "senha") ? rs.getString("senha") : null;
+
         return Cliente.builder()
                 .cpf(rs.getString("cpf"))
                 .nome(rs.getString("nome"))
-                .dataPrimeiraConta(rs.getDate("data_primeira_conta").toLocalDate())
-                .senha(rs.getString("senha"))
+                .dataPrimeiraConta(dataSql != null ? dataSql.toLocalDate() : null)
+                .senha(senha)
                 .build();
+    }
+
+    private boolean hasColumn(ResultSet rs, String columnName) throws SQLException {
+        ResultSetMetaData metaData = rs.getMetaData();
+
+        for (int i = 1; i <= metaData.getColumnCount(); i++) {
+            String label = metaData.getColumnLabel(i);
+            String name = metaData.getColumnName(i);
+            if (columnName.equalsIgnoreCase(label) || columnName.equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

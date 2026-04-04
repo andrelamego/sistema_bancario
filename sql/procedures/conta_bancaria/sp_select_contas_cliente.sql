@@ -9,6 +9,7 @@ BEGIN
         cb.data_abertura,
         cb.saldo,
         a.codigo AS codigo_agencia,
+        a.cidade,
         CASE 
             WHEN cc.codigo_conta IS NOT NULL THEN 'CORRENTE'
             WHEN cp.codigo_conta IS NOT NULL THEN 'POUPANCA'

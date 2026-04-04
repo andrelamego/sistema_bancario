@@ -15,11 +15,15 @@
 Projeto acadêmico de sistema bancário web com Java, Servlet/JSP e SQL Server.  
 A aplicação foi estruturada em camadas (`Controller`, `Service`, `Persistence` e `Model`) e combina validações na aplicação com regras no banco de dados, por meio de stored procedures e constraints.
 
+![](docs/telas/index.png)
+
 ## Visão Geral
 
 O sistema permite gerenciar clientes, agências e contas bancárias em um fluxo completo de operações administrativas e de cliente autenticado, incluindo conta conjunta com segundo titular.
 
 ## Funcionalidades
+
+![](docs/telas/painel-clientes.png)
 
 ### Módulo de Clientes
 
@@ -91,11 +95,11 @@ O projeto contém:
 
 - Diagrama ER
 
-![](doc/entityRelationshipDiagram/entityRelationshipDiagram.png)
+![](docs/entityRelationshipDiagram/entityRelationshipDiagram.png)
 
 - Diagrama de Classes
 
-![](doc/classDiagram/classDiagram.png)
+![](docs/classDiagram/classDiagram.png)
 
 ## Como Executar
 
@@ -125,5 +129,7 @@ O projeto contém:
 ## Observações
 
 - O projeto não possui foco em segurança da informação. Por esse motivo, não há criptografia de senhas no estado atual da aplicação.
+- Operações financeiras bancárias reais (como transferências, TED/PIX, pagamento de boletos, extrato financeiro completo ou liquidação contábil) não são consideradas no escopo deste projeto.
 - O fluxo de instituição bancária não está exposto como módulo completo no front-end.
 - Projeto desenvolvido para fins didáticos na disciplina de Laboratório de Banco de Dados.
+

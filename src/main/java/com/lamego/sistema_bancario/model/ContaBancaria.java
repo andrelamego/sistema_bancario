@@ -10,10 +10,11 @@ import java.time.LocalDate;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContaBancaria {
+public abstract class ContaBancaria {
     private String codigo;
     private LocalDate dataAbertura;
     private BigDecimal saldo;
+    private String tipoConta;
     private Agencia agencia;
     private Titularidade titularidade;
 }

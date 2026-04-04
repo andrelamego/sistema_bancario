@@ -107,7 +107,10 @@ public class ContaDAO implements IContaDAO{
             ResultSet rs = cs.executeQuery();
 
             while(rs.next()){
-                contas.add(mapResultSetToConta(rs));
+                ContaBancaria conta = mapResultSetToConta(rs);
+                if (conta != null) {
+                    contas.add(conta);
+                }
             }
 
             return contas;
@@ -196,25 +199,28 @@ public class ContaDAO implements IContaDAO{
 
         BigDecimal saldo = rs.getBigDecimal("saldo");
         String codigoConta = rs.getString("codigo_conta");
+        String tipoConta = rs.getString("tipo_conta");
 
         BigDecimal limiteCredito = rs.getBigDecimal("limite_credito");
         BigDecimal percentualRendimento = rs.getBigDecimal("percentual_rendimento");
 
-        if (limiteCredito != null) {
+        if ("CORRENTE".equalsIgnoreCase(tipoConta) || limiteCredito != null) {
             return ContaCorrente.builder()
                     .codigo(codigoConta)
                     .dataAbertura(dataSql)
                     .saldo(saldo)
+                    .tipoConta("CORRENTE")
                     .agencia(agencia)
                     .limiteCredito(limiteCredito)
                     .build();
         }
 
-        if (percentualRendimento != null) {
+        if ("POUPANCA".equalsIgnoreCase(tipoConta) || percentualRendimento != null) {
             return ContaPoupanca.builder()
                     .codigo(codigoConta)
                     .dataAbertura(dataSql)
                     .saldo(saldo)
+                    .tipoConta("POUPANCA")
                     .agencia(agencia)
                     .percentualRendimento(percentualRendimento)
                     .diaAniversario(rs.getInt("dia_aniversario"))

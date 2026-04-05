@@ -7,11 +7,11 @@ import java.sql.SQLException;
 public class GenericDAO {
 
     // SOLID (SRP): classe dedicada somente à responsabilidade de conexão com banco.
-    private static final String hostName = "localhost";
-    private static final String port = "64638";
-    private static final String dbName = "bd_sistema_bancario";
-    private static final String userName = "admin";
-    private static final String password = "12345678";
+    private static final String hostName = envOrDefault("DB_HOST", "localhost");
+    private static final String port = envOrDefault("DB_PORT", "64638");
+    private static final String dbName = envOrDefault("DB_NAME", "bd_sistema_bancario");
+    private static final String userName = envOrDefault("DB_USER", "admin");
+    private static final String password = envOrDefault("DB_PASSWORD", "12345678");
 
     private static final String URL =
             String.format(
@@ -31,5 +31,13 @@ public class GenericDAO {
 
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, userName, password);
+    }
+
+    private static String envOrDefault(String key, String defaultValue) {
+        String value = System.getenv(key);
+        if (value == null || value.isBlank()) {
+            return defaultValue;
+        }
+        return value;
     }
 }

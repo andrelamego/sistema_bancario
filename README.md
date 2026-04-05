@@ -135,6 +135,24 @@ O projeto contém:
 ./mvnw clean package
 ```
 
+## Execucao com Docker
+
+Suba aplicacao + SQL Server com inicializacao automatica do banco:
+
+```bash
+docker compose up --build
+```
+
+A aplicacao fica disponivel em:
+
+`http://localhost:8080/`
+
+Para derrubar os containers:
+
+```bash
+docker compose down
+```
+
 ## Observações
 
 - O projeto não possui foco em segurança da informação. Por esse motivo, não há criptografia de senhas no estado atual da aplicação.

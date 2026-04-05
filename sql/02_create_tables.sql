@@ -1,3 +1,6 @@
+USE bd_sistema_bancario
+GO
+
 CREATE TABLE instituicao_bancaria
 (
     id_instituicao BIGINT       NOT NULL,

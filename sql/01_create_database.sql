@@ -1,4 +1,4 @@
-CREATE TABLE bd_sistema_bancario
+CREATE DATABASE bd_sistema_bancario
 GO
 USE bd_sistema_bancario
 GO

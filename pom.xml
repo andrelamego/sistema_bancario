@@ -10,6 +10,37 @@
     <name>sistema_bancario</name>
     <packaging>war</packaging>
 
+    <description>Sistema bancário desenvolvido em Java Web com JSP, Servlet, JDBC e SQL Server.</description>
+    <url>http://localhost:8080/sistema_bancario</url>
+    <inceptionYear>2026</inceptionYear>
+
+    <organization>
+        <name>FATEC</name>
+        <url>https://fateczl.cps.sp.gov.br/</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>andre-lamego</id>
+            <name>Andre Lamego</name>
+            <email>andreolamego@gmail.com</email>
+            <organization>FATEC</organization>
+            <organizationUrl>https://fateczl.cps.sp.gov.br/</organizationUrl>
+            <roles>
+                <role>Software Developer</role>
+                <role>Database Modeling</role>
+            </roles>
+            <timezone>-3</timezone>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Academic Use Only</name>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>17</maven.compiler.target>
@@ -92,6 +123,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.18.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -113,4 +150,42 @@
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.1.2</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>dependencies</report>
+                            <report>dependency-info</report>
+                            <report>plugins</report>
+                            <report>team</report>
+                            <report>summary</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>17</source>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>

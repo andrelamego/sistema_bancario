@@ -37,8 +37,8 @@ public class ClienteDAO implements IClienteDAO{
         try (Connection connection = genericDAO.getConnection();
              CallableStatement cs = connection.prepareCall(sql)) {
 
-            cs.setString(1, cliente.getSenha());
-            cs.setString(2, cliente.getCpf());
+            cs.setString(1, cliente.getCpf());
+            cs.setString(2, cliente.getSenha());
 
             cs.execute();
         }

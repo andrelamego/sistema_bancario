@@ -845,6 +845,18 @@ BEGIN
         RETURN
     END
 
+    IF EXISTS (
+        SELECT 1
+        FROM titularidade t
+        INNER JOIN conta_bancaria cb ON cb.codigo_conta = t.codigo_conta
+        WHERE t.cpf_cliente = @cpf_cliente
+          AND cb.id_agencia = @id_agencia
+    )
+    BEGIN
+        RAISERROR('Cliente já possui conta nesta agência.',16,1)
+        RETURN
+    END
+
     SELECT @codigo_agencia = codigo
     FROM agencia
     WHERE id_agencia = @id_agencia
@@ -922,6 +934,18 @@ BEGIN
     )
     BEGIN
         RAISERROR('Agência não encontrada.',16,1)
+        RETURN
+    END
+
+    IF EXISTS (
+        SELECT 1
+        FROM titularidade t
+        INNER JOIN conta_bancaria cb ON cb.codigo_conta = t.codigo_conta
+        WHERE t.cpf_cliente = @cpf_cliente
+          AND cb.id_agencia = @id_agencia
+    )
+    BEGIN
+        RAISERROR('Cliente já possui conta nesta agência.',16,1)
         RETURN
     END
 

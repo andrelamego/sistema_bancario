@@ -27,8 +27,6 @@ echo "Aplicando schema..."
 ${SQLCMD} -d "${DB_NAME}" -i /sql/02_create_tables.sql
 
 echo "Aplicando stored procedures..."
-find /sql/procedures -type f -name "*.sql" ! -name "tests_*" | sort | while read -r file; do
-  ${SQLCMD} -d "${DB_NAME}" -i "${file}"
-done
+${SQLCMD} -d "${DB_NAME}" -i /sql/03_stored_procedures.sql
 
 echo "Banco inicializado com sucesso."

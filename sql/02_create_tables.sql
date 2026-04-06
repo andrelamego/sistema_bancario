@@ -72,3 +72,8 @@ CREATE TABLE titularidade
     CONSTRAINT fk_titularidade_conta FOREIGN KEY (codigo_conta) REFERENCES conta_bancaria (codigo_conta),
     CONSTRAINT fk_titularidade_cliente FOREIGN KEY (cpf_cliente) REFERENCES cliente (cpf)
 )
+
+INSERT INTO instituicao_bancaria (id_instituicao, nome) VALUES (1, 'Banco do Brasil');
+INSERT INTO instituicao_bancaria (id_instituicao, nome) VALUES (2, 'Banco Inter');
+INSERT INTO instituicao_bancaria (id_instituicao, nome) VALUES (3, 'Banco Santander');
+INSERT INTO instituicao_bancaria (id_instituicao, nome) VALUES (4, 'Banco Bradesco');
